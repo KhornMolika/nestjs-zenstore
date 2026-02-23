@@ -77,3 +77,13 @@ Here are the essential commands for your workflow:
 - Run npm run start:dev in your NestJS terminal.
 
 - Check if the ECONNREFUSED error is gone.
+
+
+### Pro-Tip: Global Alias
+If you don't want to carry this file into every project, you can create a Git Alias instead. Run this once in your terminal:
+
+- git config --global alias.lazy '!f() { git add . && git commit -m "$1" && git push origin $(git rev-parse --abbrev-ref HEAD); }; f'
+
+## Now, instead of a script, you can just type:
+
+- git lazy "my commit message"
