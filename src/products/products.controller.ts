@@ -1,12 +1,11 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { CategoriesService } from 'src/categories/categories.service';
+import { CreateProductDto } from './dto/create-product.dto';
 
 @Controller('products') // access at http://localhost:3000/products
 export class ProductsController {
   constructor(
     private readonly productsService: ProductsService,
-    private readonly categoriesService: CategoriesService,  // injected
   ) {}
 
   // Get /products
@@ -17,13 +16,7 @@ export class ProductsController {
 
   // Post /products
   @Post()
-  createProduct(@Body() body: { name: string; price: number }) {
-    return this.productsService.create(body.name, body.price);
-  }
-
-  // Get /products/test-category
-  @Get('test-category')
-  testCategory() {
-    return this.categoriesService.findAll();
+  CreateProduct( @Body() createProductDto: CreateProductDto) {  // Use the DTO!
+    return this.productsService.create(createProductDto);
   }
 }
