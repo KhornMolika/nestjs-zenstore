@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Category } from '../../categories/entities/categories.entity';
+import { Category } from '../../categories/entities/category.entity';
 
 @Entity()
 export class Product {
@@ -12,7 +12,7 @@ export class Product {
   @Column({
     type: 'decimal',
     precision: 10,
-    scale:2,
+    scale: 2,
     transformer: {
       to: (value: number) => value,
       from: (value: string) => parseFloat(value),
